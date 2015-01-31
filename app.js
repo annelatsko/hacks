@@ -1,8 +1,12 @@
-var express = require('express'),
-    exphbs  = require('express-handlebars');
+var express    = require('express'),
+    exphbs     = require('express-handlebars'),
+    bodyParser = require('body-parser');
 
 var app = express(),
     hbs = exphbs.create({ /* config */ });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
